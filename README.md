@@ -1,7 +1,8 @@
 Social Betting front end
 
-To run:
-Navigate to folder /social-betting-fe
-npm install
-npm run dev
-Navigate to localhost:8080
+
+## Instructions to run
+1. Navigate to folder */1-basic-react*
+2. *npm install*
+3. *npm run dev*
+4. Navigate to localhost:8080
