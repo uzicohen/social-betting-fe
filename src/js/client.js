@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import styles from '../css/main.css';
-import Layout from "./container/Layout";
+import MainTemplate from "../js/templates/MainTemplate";
 
 const app = document.getElementById('app');
-ReactDOM.render(<Layout/>, app);
+ReactDOM.render(<MainTemplate />, app);
