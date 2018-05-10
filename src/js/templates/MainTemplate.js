@@ -1,4 +1,8 @@
 import React from 'react';
+import BrowserHistory from 'react-history';
+import { Icon } from 'react-icons-kit';
+import {iosFootballOutline} from 'react-icons-kit/ionicons/iosFootballOutline';
+import {ic_announcement} from 'react-icons-kit/md/ic_announcement';
 
 import { Row } from 'react-bootstrap';
 
@@ -16,16 +20,17 @@ import UpdateProfileModal from '../modals/UpdateProfileModal';
 
 export default class MainTemplate extends React.Component {
   render() {
+    const IconHome = () => <Icon icon={iosFootballOutline} />;
 
     const Home = () => <Col sm={9} sm-offset={3} md={10} md-offset={2}><p>Home!</p></Col>;
-    const Tournament1 = () => <Tournament name="Tournament1" />;
-    const Tournament2 = () => <Tournament name="Tournament2" />;
-    const Tournament3 = () => <Tournament name="Tournament3" />;
+    const Tournament1 = () => <Tournament pathTo="/tournament1" name="Tournament1" />;
+    const Tournament2 = () => <Tournament pathTo="/tournament2" name="Tournament2" />;
+    const Tournament3 = () => <Tournament pathTo="/tournament3" name="Tournament3" />;
     const NewTournament = () => <p>New Tournament</p>;
     const Contact = () => <p>Contact!</p>;
 
     return (
-      <Router>
+      <Router history={BrowserHistory}>
         <div>
           {/* Main NavBar */}
           <nav className="navbar navbar-inverse navbar-fixed-top">
@@ -38,7 +43,11 @@ export default class MainTemplate extends React.Component {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                 </button>
-                <a className="navbar-brand" href="#" id="siteHeader">Social Betting</a>
+                <Icon icon={iosFootballOutline}/>
+                <Icon icon={ic_announcement}/>
+                <a className="navbar-brand" href="#" id="siteHeader">
+                  <span class="glyphicons glyphicons-soccer-ball">Social Betting</span>
+                </a>
               </div>
               <div id="mainNav" className="navbar-collapse collapse">
                 <ul className="nav navbar-nav navbar-right">

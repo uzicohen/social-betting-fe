@@ -122,3 +122,11 @@ tr, th {
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
     background-color: #D2B48C !important;
 }
+
+.navbar{
+    font-size: 18px !important;
+}
+
+.navbar-brand{
+    margin-left: 20px !important;
+}

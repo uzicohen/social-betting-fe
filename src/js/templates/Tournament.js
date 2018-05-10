@@ -1,4 +1,5 @@
 import React from 'react';
+import BrowserHistory from 'react-history';
 
 import {
     BrowserRouter as Router,
@@ -20,12 +21,13 @@ import { ic_format_list_numbered } from 'react-icons-kit/md/ic_format_list_numbe
 
 
 import TournamentNav from './TournamentNav';
+import TournamentContent from './TournamentContent';
 
 export default class Tournament extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { name: this.props.name }
+        this.state = { name: this.props.name, pathTo : this.props.pathTo }
     }
 
     render() {
@@ -36,7 +38,7 @@ export default class Tournament extends React.Component {
             </ul>;
 
         return (
-            <Router>
+            <Router history={BrowserHistory}>
                 <div className="container-fluid">
                     <div className="row" style={{ 'marginTop': '30px' }}>
                         <div className="xs-4">
@@ -44,7 +46,10 @@ export default class Tournament extends React.Component {
                         </div>
                         <div className="xs-8" />
                     </div>
-                    <TournamentNav pathTo={this.state.name} />
+                    <TournamentNav pathTo={this.state.pathTo} />
+                    <TournamentContent pathTo={this.state.pathTo} />
+
+
 
                 </div>
             </Router>
