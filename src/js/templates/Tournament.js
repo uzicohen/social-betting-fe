@@ -1,18 +1,6 @@
 import React from 'react';
 
 import {
-    Button,
-    Grid,
-    Row,
-    Col,
-    Nav,
-    Navbar,
-    NavItem,
-    NavDropdown,
-    MenuItem
-} from 'react-bootstrap';
-
-import {
     BrowserRouter as Router,
     Link,
     Redirect,
@@ -31,6 +19,8 @@ import { ic_schedule } from 'react-icons-kit/md/ic_schedule';
 import { ic_format_list_numbered } from 'react-icons-kit/md/ic_format_list_numbered';
 
 
+import TournamentNav from './TournamentNav';
+
 export default class Tournament extends React.Component {
 
     constructor(props) {
@@ -41,29 +31,21 @@ export default class Tournament extends React.Component {
     render() {
         const LeadingBoard = () =>
             <ul>
-                <ui>Uzi</ui>
-                <ui>Almog</ui>
+                <li>Uzi</li>
+                <li>Almog</li>
             </ul>;
 
         return (
             <Router>
-                <div>
-                    <div className="hidden-xs hidden-sm hidden-md col-sm-3 col-md-2 sidebar">
-                        <ul class="nav nav-sidebar">
-                            <li id="rankItemSide" className="active">
-                                <Link to="/tournament1/leading-board" />
-                            </li>
-                            <li id="gamesItemSide"><a href="#">Games</a></li>
-                            <li id="generalBetItemSide"><a href="#">General Bet</a></li>
-                            <li id="analyticsItemSide"><a href="#">Analytics</a></li>
-                        </ul>
+                <div className="container-fluid">
+                    <div className="row" style={{ 'marginTop': '30px' }}>
+                        <div className="xs-4">
+                            <h1>{this.state.name}</h1>
+                        </div>
+                        <div className="xs-8" />
                     </div>
+                    <TournamentNav pathTo={this.state.name} />
 
-                    <div className="container-fluid">
-                        <Switch>
-                            <Route path="/tournament1/leading-board" exact component={LeadingBoard} />
-                        </Switch>
-                    </div>
                 </div>
             </Router>
         );

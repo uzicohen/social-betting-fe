@@ -17,7 +17,7 @@ export default class UpdateProfileModal extends React.Component {
                                 {<UpdateProfileForm />}
 
                                 <div className="modal-footer">
-                                    <button type="button" className="btn btn-danger round-button" data-dismiss="modal">Close</button>
+                                    <button type="button" className="btn btn-danger round-button modal-close-btn" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
