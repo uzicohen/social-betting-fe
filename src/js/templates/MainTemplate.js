@@ -1,8 +1,8 @@
 import React from 'react';
 import BrowserHistory from 'react-history';
 import { Icon } from 'react-icons-kit';
-import {iosFootballOutline} from 'react-icons-kit/ionicons/iosFootballOutline';
-import {ic_announcement} from 'react-icons-kit/md/ic_announcement';
+import { iosFootballOutline } from 'react-icons-kit/ionicons/iosFootballOutline';
+import { ic_announcement } from 'react-icons-kit/md/ic_announcement';
 
 import { Row } from 'react-bootstrap';
 
@@ -43,11 +43,10 @@ export default class MainTemplate extends React.Component {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                 </button>
-                <Icon icon={iosFootballOutline}/>
-                <Icon icon={ic_announcement}/>
-                <a className="navbar-brand" href="#" id="siteHeader">
-                  <span class="glyphicons glyphicons-soccer-ball">Social Betting</span>
-                </a>
+                <div style={{ color: 'white', display: 'inline-block', marginLeft: '12px' }} className="pull-left">
+                  <Icon size={48} icon={iosFootballOutline} />
+                </div>
+                <a className="navbar-brand" href="#" id="siteHeader">Social Betting</a>
               </div>
               <div id="mainNav" className="navbar-collapse collapse">
                 <ul className="nav navbar-nav navbar-right">
