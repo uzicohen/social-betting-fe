@@ -9,10 +9,6 @@ export default class UpdateProfileForm extends React.Component {
                 <div className="form-group">
                     <div className="cols-sm-10">
                         <div className="input-group">
-                            <span className="input-group-addon">
-                                <label for="name" className="control-label">New Name</label>
-                                <i className="fa fa-envelope fa" aria-hidden="true"></i>
-                            </span>
                             <input inputType="register" autoComplete="off" type="text" className="form-control" name="name" placeholder="Enter new Name"
                             />
                         </div>
@@ -22,10 +18,6 @@ export default class UpdateProfileForm extends React.Component {
                 <div className="form-group">
                     <div className="cols-sm-10">
                         <div className="input-group">
-                            <span className="input-group-addon">
-                                <label for="nickname" className="control-label">New Nickname</label>
-                                <i className="fa fa-envelope fa" aria-hidden="true" />
-                            </span>
                             <input input-type="register" autoComplete="off" type="text" className="form-control" name="nickname" placeholder="Enter new Nickname" />
                         </div>
                     </div>

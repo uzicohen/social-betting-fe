@@ -1,27 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { Row } from 'react-bootstrap';
-
-import {
-  BrowserRouter as Router,
-  Link,
-  Redirect,
-  Route,
-  Switch
-} from 'react-router-dom';
-
-import { LinkContainer } from 'react-router-bootstrap';
-import Tournament from './Tournament';
-import UpdateProfileModal from '../modals/UpdateProfileModal';
+import LeadingBoardEntry from './LeadingBoardEntry';
 
 export default class LeadingBoard extends React.Component {
   render() {
+
+    const data = [1, 2, 3, 4, 5, 6].map((idx) => {
+      var props = {};
+      props.rank = idx;
+      props.name = 'User' + idx;
+      props.nickName = 'Nickname' + idx;
+      props.score = 60 - idx;
+      return <LeadingBoardEntry key={idx} {...props} />;
+    });
+
     return (
       <div>
 
-        <div className="row">
-          <h1 className="page-header pull-left">Leading Board</h1>
-        </div>
+        <div className="row" />
 
         <div className="row">
           <div className="col-xs-1"></div>
@@ -38,6 +35,7 @@ export default class LeadingBoard extends React.Component {
                   </tr>
                 </thead>
                 <tbody id="ranking-placeholder">
+                  {data}
                 </tbody>
               </table>
             </div>

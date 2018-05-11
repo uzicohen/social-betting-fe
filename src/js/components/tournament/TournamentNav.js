@@ -1,22 +1,11 @@
 import React from 'react';
-
-import { Button } from 'react-bootstrap';
-
-import {
-    BrowserRouter as Router,
-    Link,
-    Redirect,
-    Route,
-    Switch
-} from 'react-router-dom';
-
-import { LinkContainer } from 'react-router-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default class TournamentNav extends React.Component {
     render() {
         var linkToLeadingBoard = this.props.pathTo + "/leading-board";
         var linkToGames = this.props.pathTo + "/games";
-        var linkToGeneralBat = this.props.pathTo + "/general-bet";
+        var linkToGeneralBet = this.props.pathTo + "/general-bet";
         return (
             <div className="row">
                 <ul class="nav nav-tabs nav-justified" role="tablist">
@@ -29,7 +18,7 @@ export default class TournamentNav extends React.Component {
                         {/* <a className="nav-link active" data-toggle="tab" href="#home" role="tab" aria-selected="false">Games</a> */}
                     </li>
                     <li role="presentation">
-                        <Link to={linkToGeneralBat}>General Bat</Link>
+                        <Link to={linkToGeneralBet}>General Bat</Link>
                         {/* <a className="nav-link active" data-toggle="tab" href="#home" role="tab" aria-selected="false">General Bet</a> */}
                     </li>
 

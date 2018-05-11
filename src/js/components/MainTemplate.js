@@ -2,9 +2,6 @@ import React from 'react';
 import BrowserHistory from 'react-history';
 import { Icon } from 'react-icons-kit';
 import { iosFootballOutline } from 'react-icons-kit/ionicons/iosFootballOutline';
-import { ic_announcement } from 'react-icons-kit/md/ic_announcement';
-
-import { Row } from 'react-bootstrap';
 
 import {
   BrowserRouter as Router,
@@ -15,19 +12,39 @@ import {
 } from 'react-router-dom';
 
 import { LinkContainer } from 'react-router-bootstrap';
-import Tournament from './Tournament';
+import Tournament from './tournament/Tournament';
 import UpdateProfileModal from '../modals/UpdateProfileModal';
+import NewTournamentForm from '../forms/NewTournamentForm';
 
 export default class MainTemplate extends React.Component {
   render() {
-    const IconHome = () => <Icon icon={iosFootballOutline} />;
 
-    const Home = () => <Col sm={9} sm-offset={3} md={10} md-offset={2}><p>Home!</p></Col>;
-    const Tournament1 = () => <Tournament pathTo="/tournament1" name="Tournament1" />;
-    const Tournament2 = () => <Tournament pathTo="/tournament2" name="Tournament2" />;
-    const Tournament3 = () => <Tournament pathTo="/tournament3" name="Tournament3" />;
-    const NewTournament = () => <p>New Tournament</p>;
-    const Contact = () => <p>Contact!</p>;
+    // Create mock JSON array of tournaments
+    const tournaments = [1, 2, 3].map(idx => {
+      var dict = {};
+      dict['id'] = idx;
+      dict['name'] = 'Tournament' + idx;
+      dict['link'] = '/torurnament' + idx;
+      return dict;
+    });
+
+    const tournamentItems = tournaments.map((tour) => {
+      const a = <Tournament key={tour.id} pathTo={tour.link} name={tour.name} />;
+      return a;
+    }
+    );
+
+    const links = tournaments.map(tour =>
+      <li role="presentation">
+        <Link role="menuitem" to={tour.link}>{tour.name}</Link>
+      </li>
+    );
+
+    const tournamentRoutes = [1, 2, 3].map((idx) => <Route path={tournaments[idx - 1].link} exact component={() => tournamentItems[idx - 1]} />);
+
+    const hasTournaments = false;
+    const linkToFirstTournament = "/torurnament1";
+    const linkToNewTornament = "/new-tournament";
 
     return (
       <Router history={BrowserHistory}>
@@ -46,7 +63,9 @@ export default class MainTemplate extends React.Component {
                 <div style={{ color: 'white', display: 'inline-block', marginLeft: '12px' }} className="pull-left">
                   <Icon size={48} icon={iosFootballOutline} />
                 </div>
-                <a className="navbar-brand" href="#" id="siteHeader">Social Betting</a>
+                {hasTournaments ?
+                  <Link className="navbar-brand" to={linkToFirstTournament}>Social Betting</Link>
+                  : <Link className="navbar-brand" to={linkToNewTornament}>Social Betting</Link>}
               </div>
               <div id="mainNav" className="navbar-collapse collapse">
                 <ul className="nav navbar-nav navbar-right">
@@ -54,15 +73,7 @@ export default class MainTemplate extends React.Component {
                   <li class="dropdown">
                     <a id="drop4" role="button" data-toggle="dropdown" href="#">My Tournaments <b class="caret"></b></a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                      <li role="presentation">
-                        <Link role="menuitem" to="/tournament1">Tournament1</Link>
-                      </li>
-                      <li role="presentation">
-                        <Link role="menuitem" to="/tournament2">Tournament2</Link>
-                      </li>
-                      <li role="presentation">
-                        <Link role="menuitem" to="/tournament3">Tournament3</Link>
-                      </li>
+                      {links}
                     </ul>
                   </li>
 
@@ -95,9 +106,9 @@ export default class MainTemplate extends React.Component {
           <div className="container-fluid" style={{ 'marginTop': '30px' }}>
             <div className="row main-section">
               <Switch>
-                <Route path="/tournament1" exact component={Tournament1} />
-                <Route path="/tournament2" exact component={Tournament2} />
-                <Route path="/tournament3" exact component={Tournament3} />
+              <Route path={linkToNewTornament} exact component={NewTournamentForm} />
+
+                {tournamentRoutes}
               </Switch>
             </div>
           </div>
