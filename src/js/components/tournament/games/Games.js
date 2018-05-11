@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Row } from 'react-bootstrap';
-
 import {
   BrowserRouter as Router,
   Link,
@@ -11,22 +9,18 @@ import {
 } from 'react-router-dom';
 
 import { LinkContainer } from 'react-router-bootstrap';
+import Game from './Game';
 
 export default class Games extends React.Component {
   render() {
     return (
       <div className="row">
-
-        <div className="col-xs-3">
-          <ul className="nav nav-tabs pull-center">
-
-          </ul>
-
-          <div className="row">
-
-          </div>
-
-        </div>
+        {<Game></Game>}
+        {<Game></Game>}
+        {<Game></Game>}
+        {<Game></Game>}
+        {<Game></Game>}
+        {<Game></Game>}
       </div>
     );
   }

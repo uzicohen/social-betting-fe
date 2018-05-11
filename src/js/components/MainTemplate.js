@@ -42,7 +42,7 @@ export default class MainTemplate extends React.Component {
 
     const tournamentRoutes = [1, 2, 3].map((idx) => <Route path={tournaments[idx - 1].link} exact component={() => tournamentItems[idx - 1]} />);
 
-    const hasTournaments = false;
+    const hasTournaments = true;
     const linkToFirstTournament = "/torurnament1";
     const linkToNewTornament = "/new-tournament";
 
@@ -78,7 +78,7 @@ export default class MainTemplate extends React.Component {
                   </li>
 
                   <li>
-                    <a href="#">New Tournament</a>
+                  <Link className="navbar-brand" to={linkToNewTornament}>New Tournament</Link>
                   </li>
                   <li>
                     <a href="#">Join a Tournament</a>
