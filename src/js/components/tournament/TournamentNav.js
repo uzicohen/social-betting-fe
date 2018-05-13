@@ -1,29 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Nav, NavItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 export default class TournamentNav extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         var linkToLeadingBoard = this.props.pathTo + "/leading-board";
         var linkToGames = this.props.pathTo + "/games";
         var linkToGeneralBet = this.props.pathTo + "/general-bet";
         return (
             <div className="row">
-                <ul class="nav nav-tabs nav-justified" role="tablist">
-                    <li className="active" role="presentation">
-                        <Link to={linkToLeadingBoard}>Leading Board</Link>
-                        {/* <a className="nav-link active" data-toggle="tab" href="#home" role="tab" aria-selected="true">Leading Board</a> */}
-                    </li>
-                    <li role="presentation">
-                        <Link to={linkToGames}>Games</Link>
-                        {/* <a className="nav-link active" data-toggle="tab" href="#home" role="tab" aria-selected="false">Games</a> */}
-                    </li>
-                    <li role="presentation">
-                        <Link to={linkToGeneralBet}>General Bat</Link>
-                        {/* <a className="nav-link active" data-toggle="tab" href="#home" role="tab" aria-selected="false">General Bet</a> */}
-                    </li>
+                <Nav bsStyle="tabs" justified activeKey={1}>
+                    <LinkContainer to={linkToLeadingBoard}>
+                        <NavItem eventKey={1}>
+                            Leading Board
+                        </NavItem>
+                    </LinkContainer>
+                    <LinkContainer to={linkToGames}>
+                        <NavItem eventKey={2}>
+                            Games
+                        </NavItem>
+                    </LinkContainer>
+                    <LinkContainer to={linkToGeneralBet}>
+                        <NavItem eventKey={3}>
+                            General Bet
+                        </NavItem>
+                    </LinkContainer>
+                </Nav>
 
-
-                </ul>
             </div>
         );
     }

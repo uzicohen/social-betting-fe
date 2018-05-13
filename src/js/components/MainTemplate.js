@@ -78,7 +78,7 @@ export default class MainTemplate extends React.Component {
                   </li>
 
                   <li>
-                  <Link className="navbar-brand" to={linkToNewTornament}>New Tournament</Link>
+                    <Link to={linkToNewTornament}>New Tournament</Link>
                   </li>
                   <li>
                     <a href="#">Join a Tournament</a>
@@ -106,8 +106,7 @@ export default class MainTemplate extends React.Component {
           <div className="container-fluid" style={{ 'marginTop': '30px' }}>
             <div className="row main-section">
               <Switch>
-              <Route path={linkToNewTornament} exact component={NewTournamentForm} />
-
+                <Route path={linkToNewTornament} exact component={NewTournamentForm} />
                 {tournamentRoutes}
               </Switch>
             </div>

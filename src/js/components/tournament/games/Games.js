@@ -15,12 +15,12 @@ export default class Games extends React.Component {
   render() {
     return (
       <div className="row">
-        {<Game></Game>}
-        {<Game></Game>}
-        {<Game></Game>}
-        {<Game></Game>}
-        {<Game></Game>}
-        {<Game></Game>}
+        {<Game pathTo={this.props.pathTo} id={1}></Game>}
+        {<Game pathTo={this.props.pathTo} id={2}></Game>}
+        {<Game pathTo={this.props.pathTo} id={3}></Game>}
+        {<Game pathTo={this.props.pathTo} id={4}></Game>}
+        {<Game pathTo={this.props.pathTo} id={5}></Game>}
+        {<Game pathTo={this.props.pathTo} id={6}></Game>}
       </div>
     );
   }
