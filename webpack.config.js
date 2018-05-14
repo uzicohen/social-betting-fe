@@ -10,13 +10,13 @@ module.exports = {
     historyApiFallback: true,
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules)/,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015', 'stage-0'],
+          presets: ['react', 'es2015', 'stage-2'],
           plugins: ['react-html-attrs', 'transform-decorators-legacy', 'transform-class-properties'],
         }
       },
@@ -27,8 +27,8 @@ module.exports = {
     ]
   },
   output: {
-    path: __dirname + "/src/",
-    filename: "client.min.js",
+    path: path.join(__dirname, "src"),
+    filename: "../../social-betting-be/src/main/resources/static/built/client.min.js",
     publicPath: '/'
   },
   plugins: debug ? [] : [
