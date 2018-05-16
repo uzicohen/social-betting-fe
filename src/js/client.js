@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import MainTemplate from "../js/components/MainTemplate";
+import MainSection from "./MainSection";
 
 const app = document.getElementById('app');
-ReactDOM.render(<MainTemplate />, app);
+ReactDOM.render(<MainSection />, app);

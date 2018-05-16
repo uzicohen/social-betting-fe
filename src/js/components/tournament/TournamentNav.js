@@ -16,7 +16,7 @@ export default class TournamentNav extends React.Component {
                 <Nav bsStyle="tabs" justified activeKey={1}>
                     <LinkContainer to={linkToLeadingBoard}>
                         <NavItem eventKey={1}>
-                            Leading Board111
+                            Leading Board
                         </NavItem>
                     </LinkContainer>
                     <LinkContainer to={linkToGames}>

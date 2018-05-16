@@ -12,11 +12,18 @@ import {
 } from 'react-router-dom';
 
 import { LinkContainer } from 'react-router-bootstrap';
-import Tournament from './tournament/Tournament';
-import UpdateProfileModal from '../modals/UpdateProfileModal';
-import NewTournamentForm from '../forms/NewTournamentForm';
+import Tournament from './components/tournament/Tournament'
+import UpdateProfileModal from './modals/UpdateProfileModal';
+import NewTournamentForm from './forms/NewTournamentForm';
 
-export default class MainTemplate extends React.Component {
+export default class SigendInSection extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { signedIn: false };
+  }
+
+
   render() {
 
     // Create mock JSON array of tournaments
@@ -47,6 +54,7 @@ export default class MainTemplate extends React.Component {
     const linkToNewTornament = "/new-tournament";
 
     return (
+
       <Router history={BrowserHistory}>
         <div>
           {/* Main NavBar */}
