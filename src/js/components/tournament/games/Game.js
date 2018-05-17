@@ -61,7 +61,7 @@ export default class Game extends React.Component {
                   <span className="label label-success label-as-badge pull-right">3</span>
                 </div>
                 <div className="col-xs-3 col-sm-4 col-md-3 col-lg-2">
-                  <input input-type="game" id="team1Input" type="text" className="form-control" autocomplete="off" />
+                  <input input-type="game" id="team1Input" type="text" className="form-control" autoComplete="off" />
                 </div>
               </div>
             </div>
@@ -76,7 +76,7 @@ export default class Game extends React.Component {
             <div className="panel-body">
               <div className="row">
                 <div className="col-xs-4 col-sm-4 col-md-3 col-lg-2">
-                  <input input-type="game" id="team2Input" type="text" className="form-control" autocomplete="off" />
+                  <input input-type="game" id="team2Input" type="text" className="form-control" autoComplete="off" />
                 </div>
                 <div id="team2CurrentResult" className="col-xs-1 col-sm-1 col-md-4 col-lg-4">
                   '<span className="label label-success label-as-badge pull-left">2</span>

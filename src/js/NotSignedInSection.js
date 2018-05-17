@@ -4,7 +4,7 @@ import React from 'react';
 import SignInForm from './forms/SignInForm';
 import RegisterModal from './modals/RegisterModal';
 
-export default class SignIn extends React.Component {
+export default class NotSignedInSection extends React.Component {
     render() {
         return (
             <div>
@@ -24,7 +24,7 @@ export default class SignIn extends React.Component {
                             <div className="col-md-4">
                                 <div className="main-login main-center">
 
-                                    <SignInForm />
+                                    <SignInForm setGlobalSignIn={this.props.setGlobalSignIn} />
 
                                     <div style={{ 'marginTop': '150px' }}>
                                         <button type="button"

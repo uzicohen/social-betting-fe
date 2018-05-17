@@ -16,16 +16,44 @@ import Tournament from './components/tournament/Tournament'
 import UpdateProfileModal from './modals/UpdateProfileModal';
 import NewTournamentForm from './forms/NewTournamentForm';
 
-export default class SigendInSection extends React.Component {
+import axios from 'axios';
+import auth from './api/auth';
+
+export default class SignedInSection extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { signedIn: false };
+    this.state = { currentUser: this.props.currentUser };
+    this.signOut = this.signOut.bind(this);
   }
 
 
-  render() {
+  signOut() {
+    auth.removeJwtToken();
+    this.props.setGlobalSignIn(false);
+  };
 
+  setCurrentUser() {
+    axios({
+      method: 'get',
+      url: '/api/users/me',
+      headers: auth.createAuthorizationTokenHeader(),
+      data: {}
+    }).then(response => {
+      this.setState({ currentUser: response.data });
+    }).catch(error => {
+      this.setState({ signedIn: false });
+    });
+  }
+
+
+  componentDidMount() {
+    if (!this.state.currentUser.nickname) {
+      this.setCurrentUser();
+    }
+  }
+
+  render() {
     // Create mock JSON array of tournaments
     const tournaments = [1, 2, 3].map(idx => {
       var dict = {};
@@ -43,15 +71,15 @@ export default class SigendInSection extends React.Component {
 
     const links = tournaments.map(tour =>
       <li role="presentation">
-        <Link role="menuitem" to={tour.link}>{tour.name}</Link>
+        <Link role="menuitem" to={tour.link} key={tour.key}>{tour.name}</Link>
       </li>
     );
 
-    const tournamentRoutes = [1, 2, 3].map((idx) => <Route path={tournaments[idx - 1].link} exact component={() => tournamentItems[idx - 1]} />);
+    const tournamentRoutes = [1, 2, 3].map((idx) => <Route key={idx} path={tournaments[idx - 1].link} exact component={() => tournamentItems[idx - 1]} />);
 
     const hasTournaments = true;
     const linkToFirstTournament = "/torurnament1";
-    const linkToNewTornament = "/new-tournament";
+    const linkToNewTournament = "/new-tournament";
 
     return (
 
@@ -73,7 +101,7 @@ export default class SigendInSection extends React.Component {
                 </div>
                 {hasTournaments ?
                   <Link className="navbar-brand" to={linkToFirstTournament}>Social Betting</Link>
-                  : <Link className="navbar-brand" to={linkToNewTornament}>Social Betting</Link>}
+                  : <Link className="navbar-brand" to={linkToNewTournament}>Social Betting</Link>}
               </div>
               <div id="mainNav" className="navbar-collapse collapse">
                 <ul className="nav navbar-nav navbar-right">
@@ -86,7 +114,7 @@ export default class SigendInSection extends React.Component {
                   </li>
 
                   <li>
-                    <Link to={linkToNewTornament}>New Tournament</Link>
+                    <Link to={linkToNewTournament}>New Tournament</Link>
                   </li>
                   <li>
                     <a href="#">Join a Tournament</a>
@@ -97,12 +125,20 @@ export default class SigendInSection extends React.Component {
                   <li>
                     <a href="#">Terms</a>
                   </li>
-                  <li>
-                    <a data-toggle="modal" href="#profileModal">Profile</a>
+
+
+                  <li class="dropdown">
+                    <a id="user" role="button" data-toggle="dropdown" href="#">{this.state.currentUser.nickname} <b class="caret"></b></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="user">
+                      <li>
+                        <a data-toggle="modal" href="#profileModal">Profile</a>
+                      </li>
+                      <li>
+                        <a onClick={() => this.signOut()}>Sign Out</a>
+                      </li>
+                    </ul>
                   </li>
-                  <li>
-                    <a href="#">Sign Out</a>
-                  </li>
+
                 </ul>
               </div>
             </div>
@@ -114,7 +150,7 @@ export default class SigendInSection extends React.Component {
           <div className="container-fluid" style={{ 'marginTop': '30px' }}>
             <div className="row main-section">
               <Switch>
-                <Route path={linkToNewTornament} exact component={NewTournamentForm} />
+                <Route path={linkToNewTournament} exact component={NewTournamentForm} />
                 {tournamentRoutes}
               </Switch>
             </div>
