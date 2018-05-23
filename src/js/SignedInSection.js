@@ -23,62 +23,78 @@ export default class SignedInSection extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { currentUser: this.props.currentUser };
+    this.state = { currentUser: this.props.currentUser, tournaments: [] };
     this.signOut = this.signOut.bind(this);
   }
 
 
   signOut() {
     auth.removeJwtToken();
-    this.props.setGlobalSignIn(false);
+    this.props.setGlobalSignedIn(false);
   };
 
   setCurrentUser() {
-    axios({
-      method: 'get',
-      url: '/api/users/me',
-      headers: auth.createAuthorizationTokenHeader(),
-      data: {}
-    }).then(response => {
-      this.setState({ currentUser: response.data });
-    }).catch(error => {
-      this.setState({ signedIn: false });
+    this.setState({
+      currentUser: { "id": 1, "username": "uzicohen9@gmail.com", "nickname": "uzinio", "accountNonExpired": true, "accountNonLocked": true, "credentialsNonExpired": true, "authorities": [{ "authority": "admin" }] }
     });
+
+    // axios({
+    //   method: 'get',
+    //   url: '/api/users/me',
+    //   headers: auth.createAuthorizationTokenHeader(),
+    //   data: {}
+    // }).then(response => {
+    //   this.setState({ currentUser: response.data });
+    // }).catch(error => {
+    //   this.setState({ signedIn: false });
+    // });
   }
+
+  getAllTournaments() {
+    this.setState({ tournaments: [{ "id": 7, "createdBy": { "id": 1, "username": "uzicohen9@gmail.com", "nickname": "uzinio", "authorities": [{ "authority": "admin" }], "accountNonExpired": true, "accountNonLocked": true, "credentialsNonExpired": true }, "name": "My friends from the army", "dateCreated": "2018-05-23T05:51:49.860+0000", "competition": { "id": 3, "name": "World cup 2018", "photoUrl": "someurl", "description": "Soccer world cup in Russia" } }, { "id": 5, "createdBy": { "id": 1, "username": "uzicohen9@gmail.com", "nickname": "uzinio", "authorities": [{ "authority": "admin" }], "accountNonExpired": true, "accountNonLocked": true, "credentialsNonExpired": true }, "name": "Belgrad 2020 - World cup", "dateCreated": "2018-05-23T05:51:49.846+0000", "competition": { "id": 3, "name": "World cup 2018", "photoUrl": "someurl", "description": "Soccer world cup in Russia" } }] });
+
+    // axios({
+    //   method: 'get',
+    //   url: '/api/tournaments',
+    //   headers: auth.createAuthorizationTokenHeader(),
+    //   data: {}
+    // }).then(response => {
+    //   this.setState({ tournaments: response.data });
+    //   console.log(response);
+    // }).catch(error => {
+    //   console.log(error);
+    // });
+  }
+
 
 
   componentDidMount() {
     if (!this.state.currentUser.nickname) {
       this.setCurrentUser();
     }
+
+    this.getAllTournaments();
+
   }
 
+
   render() {
-    // Create mock JSON array of tournaments
-    const tournaments = [1, 2, 3].map(idx => {
-      var dict = {};
-      dict['id'] = idx;
-      dict['name'] = 'Tournament' + idx;
-      dict['link'] = '/torurnament' + idx;
-      return dict;
-    });
-
-    const tournamentItems = tournaments.map((tour) => {
-      const a = <Tournament key={tour.id} pathTo={tour.link} name={tour.name} />;
-      return a;
+    const tournamentItems = {};
+    for (var i = 0; i < this.state.tournaments.length; i++) {
+      var tour = this.state.tournaments[i];
+      tournamentItems[tour.id] = <Tournament key={tour.id} pathTo={"/tournament" + tour.id} name={tour.name} />;
     }
-    );
 
-    const links = tournaments.map(tour =>
+    const links = this.state.tournaments.map(tour =>
       <li role="presentation">
-        <Link role="menuitem" to={tour.link} key={tour.key}>{tour.name}</Link>
+        <Link role="menuitem" to={"/tournament" + tour.id} key={tour.id}>{tour.name}</Link>
       </li>
     );
 
-    const tournamentRoutes = [1, 2, 3].map((idx) => <Route key={idx} path={tournaments[idx - 1].link} exact component={() => tournamentItems[idx - 1]} />);
+    const tournamentRoutes = this.state.tournaments.map((tour) => <Route key={tour.id} path={"/tournament" + tour.id} exact component={() => tournamentItems[tour.id]} />);
 
-    const hasTournaments = true;
-    const linkToFirstTournament = "/torurnament1";
+    const hasTournaments = this.state.tournaments.length > 0;
+    const linkToFirstTournament = hasTournaments ? "/torurnament" + this.state.tournaments[0].id : '';
     const linkToNewTournament = "/new-tournament";
 
     return (

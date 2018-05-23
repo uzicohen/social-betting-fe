@@ -19,7 +19,7 @@ export default class TournamentContent extends React.Component {
         var linkToHome = this.props.pathTo + "/";
         var linkToLeadingBoard = this.props.pathTo + "/leading-board";
         var linkToGames = this.props.pathTo + "/games";
-        var linkToGeneralBat = this.props.pathTo + "/general-bet";
+        var linkToGeneralBet = this.props.pathTo + "/general-bet";
         return (
             <div classNameName="row">
 
@@ -27,7 +27,7 @@ export default class TournamentContent extends React.Component {
                     <Redirect path={linkToHome} exact to={linkToLeadingBoard} />
                     <Route path={linkToLeadingBoard} exact component={LeadingBoard} />
                     <Route path={linkToGames} exact component={Games} />
-                    <Route path={linkToGeneralBat} exact component={GeneralBet} />
+                    <Route path={linkToGeneralBet} exact component={GeneralBet} />
                 </Switch>
             </div >
         );

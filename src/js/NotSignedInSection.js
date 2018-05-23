@@ -24,7 +24,7 @@ export default class NotSignedInSection extends React.Component {
                             <div className="col-md-4">
                                 <div className="main-login main-center">
 
-                                    <SignInForm setGlobalSignIn={this.props.setGlobalSignIn} />
+                                    <SignInForm setGlobalSignedIn={this.props.setGlobalSignedIn} />
 
                                     <div style={{ 'marginTop': '150px' }}>
                                         <button type="button"
