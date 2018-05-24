@@ -12,14 +12,8 @@ import TournamentNav from './TournamentNav';
 import TournamentContent from './TournamentContent';
 
 export default class Tournament extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = { name: this.props.name, pathTo: this.props.pathTo }
-    }
-
     render() {
-        var linkToHome = this.state.pathTo + "/";
+        var linkToHome = this.props.pathTo + "/";
 
         return (
             <Router history={BrowserHistory}>
@@ -27,14 +21,14 @@ export default class Tournament extends React.Component {
                     <div className="row" style={{ 'marginTop': '30px' }}>
                         <div className="xs-4">
                             <Link to={linkToHome}>
-                                <h1>{this.state.name}</h1>
+                                <h1>{this.props.name}</h1>
                             </Link>
                         </div>
                         <div className="xs-8" />
                     </div>
-                    <TournamentNav pathTo={this.state.pathTo} />
+                    <TournamentNav pathTo={this.props.pathTo} />
                     <div className="row" style={{ 'marginBottom': '20px' }} />
-                    <TournamentContent pathTo={this.state.pathTo} />
+                    <TournamentContent pathTo={this.props.pathTo} bets={this.props.bets} />
                 </div>
             </Router>
         );

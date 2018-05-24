@@ -51,7 +51,9 @@ export default class SignedInSection extends React.Component {
   }
 
   getAllTournaments() {
-    this.setState({ tournaments: [{ "id": 7, "createdBy": { "id": 1, "username": "uzicohen9@gmail.com", "nickname": "uzinio", "authorities": [{ "authority": "admin" }], "accountNonExpired": true, "accountNonLocked": true, "credentialsNonExpired": true }, "name": "My friends from the army", "dateCreated": "2018-05-23T05:51:49.860+0000", "competition": { "id": 3, "name": "World cup 2018", "photoUrl": "someurl", "description": "Soccer world cup in Russia" } }, { "id": 5, "createdBy": { "id": 1, "username": "uzicohen9@gmail.com", "nickname": "uzinio", "authorities": [{ "authority": "admin" }], "accountNonExpired": true, "accountNonLocked": true, "credentialsNonExpired": true }, "name": "Belgrad 2020 - World cup", "dateCreated": "2018-05-23T05:51:49.846+0000", "competition": { "id": 3, "name": "World cup 2018", "photoUrl": "someurl", "description": "Soccer world cup in Russia" } }] });
+    this.setState({
+      tournaments: [{ "id": 5, "createdBy": { "id": 1, "username": "uzicohen9@gmail.com", "nickname": "uzinio", "accountNonExpired": true, "accountNonLocked": true, "credentialsNonExpired": true, "authorities": [{ "authority": "admin" }] }, "name": "Belgrad 2020 - World cup", "dateCreated": "2018-05-24T07:11:13.822+0000", "competition": { "id": 3, "name": "World cup 2018", "photoUrl": "someurl", "description": "Soccer world cup in Russia" }, "bets": [{ "id": 28, "game": { "id": 20, "team1": { "id": 12, "name": "Italy", "photoUrl": "http://someurl", "description": "Italy's national team" }, "team2": { "id": 13, "name": "France", "photoUrl": "http://someurl", "description": "France's national team" }, "date": "2018-06-21T07:00:00.000+0000" }, "team1": 1, "team2": 0, "date": "2018-05-24T07:11:14.021+0000" }, { "id": 29, "game": { "id": 21, "team1": { "id": 14, "name": "Germany", "photoUrl": "http://someurl", "description": "Germany's national team" }, "team2": { "id": 15, "name": "England", "photoUrl": "http://someurl", "description": "England's national team" }, "date": "2018-06-22T07:00:00.000+0000" }, "team1": 1, "team2": 2, "date": "2018-05-24T07:11:14.029+0000" }, { "id": 30, "game": { "id": 22, "team1": { "id": 12, "name": "Italy", "photoUrl": "http://someurl", "description": "Italy's national team" }, "team2": { "id": 14, "name": "Germany", "photoUrl": "http://someurl", "description": "Germany's national team" }, "date": "2018-06-22T21:00:00.000+0000" }, "team1": 1, "team2": 4, "date": "2018-05-24T07:11:14.035+0000" }, { "id": 31, "game": { "id": 23, "team1": { "id": 13, "name": "France", "photoUrl": "http://someurl", "description": "France's national team" }, "team2": { "id": 15, "name": "England", "photoUrl": "http://someurl", "description": "England's national team" }, "date": "2018-06-22T21:00:00.000+0000" }, "team1": 3, "team2": 3, "date": "2018-05-24T07:11:14.039+0000" }] }, { "id": 6, "createdBy": { "id": 1, "username": "uzicohen9@gmail.com", "nickname": "uzinio", "accountNonExpired": true, "accountNonLocked": true, "credentialsNonExpired": true, "authorities": [{ "authority": "admin" }] }, "name": "Belgrad 2020 - NBA", "dateCreated": "2018-05-24T07:11:13.829+0000", "competition": { "id": 4, "name": "NBA playoffs 2018", "photoUrl": "someurl", "description": "National Basketball association playoffs of 2018" }, "bets": [] }]
+    });
 
     // axios({
     //   method: 'get',
@@ -82,7 +84,7 @@ export default class SignedInSection extends React.Component {
     const tournamentItems = {};
     for (var i = 0; i < this.state.tournaments.length; i++) {
       var tour = this.state.tournaments[i];
-      tournamentItems[tour.id] = <Tournament key={tour.id} pathTo={"/tournament" + tour.id} name={tour.name} />;
+      tournamentItems[tour.id] = <Tournament key={tour.id} pathTo={"/tournament" + tour.id} name={tour.name} bets={tour.bets} />;
     }
 
     const links = this.state.tournaments.map(tour =>

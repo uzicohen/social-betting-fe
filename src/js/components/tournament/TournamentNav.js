@@ -3,13 +3,9 @@ import { Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 export default class TournamentNav extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         var linkToLeadingBoard = this.props.pathTo + "/leading-board";
-        var linkToGames = this.props.pathTo + "/games";
+        var linkToBets = this.props.pathTo + "/bets";
         var linkToGeneralBet = this.props.pathTo + "/general-bet";
         return (
             <div className="row">
@@ -19,9 +15,9 @@ export default class TournamentNav extends React.Component {
                             Leading Board
                         </NavItem>
                     </LinkContainer>
-                    <LinkContainer to={linkToGames}>
+                    <LinkContainer to={linkToBets}>
                         <NavItem eventKey={2}>
-                            Games
+                            Bets
                         </NavItem>
                     </LinkContainer>
                     <LinkContainer to={linkToGeneralBet}>

@@ -10,7 +10,7 @@ import {
   Switch
 } from 'react-router-dom';
 
-export default class Game extends React.Component {
+export default class Bet extends React.Component {
 
   componentDidMount() {
   }
@@ -30,7 +30,7 @@ export default class Game extends React.Component {
         <div className="row-xs row-sm row-md col-lg-2">
           <div className="panel panel-info">
             <div id="gameInfoHeading" className="panel-heading">
-              Group A, game 1
+              {this.props.data.id}
             </div>
             <div id="gameInfoBody" className="panel-body">
               <OverlayTrigger placement="bottom" overlay={tooltip}>
@@ -45,7 +45,7 @@ export default class Game extends React.Component {
         <div className="row-xs row-sm row-md col-lg-5">
           <div className="panel panel-primary">
             <div className="panel-heading" id="team1Heading">
-              France
+              {this.props.data.game.team1.name}
             </div>
             <div className="panel-body">
               <div className="row">
@@ -58,7 +58,7 @@ export default class Game extends React.Component {
                 </div>
                 <div className="hidden-xs hidden-1 col-md-3 col-lg-3"></div>
                 <div id="team1CurrentResult" className="col-xs-3 col-sm-1 col-md-2 col-lg-4">
-                  <span className="label label-success label-as-badge pull-right">3</span>
+                  <span className="label label-success label-as-badge pull-right">{this.props.data.team1}</span>
                 </div>
                 <div className="col-xs-3 col-sm-4 col-md-3 col-lg-2">
                   <input input-type="game" id="team1Input" type="text" className="form-control" autoComplete="off" />
@@ -71,7 +71,7 @@ export default class Game extends React.Component {
         <div className="row-xs row-sm row-md col-lg-5">
           <div className="panel panel-primary">
             <div className="panel-heading" id="team2Heading" style={{ 'textAlign': 'right' }} >
-              Italy
+              {this.props.data.game.team2.name}
             </div>
             <div className="panel-body">
               <div className="row">
@@ -79,7 +79,7 @@ export default class Game extends React.Component {
                   <input input-type="game" id="team2Input" type="text" className="form-control" autoComplete="off" />
                 </div>
                 <div id="team2CurrentResult" className="col-xs-1 col-sm-1 col-md-4 col-lg-4">
-                  '<span className="label label-success label-as-badge pull-left">2</span>
+                  '<span className="label label-success label-as-badge pull-left">{this.props.data.team2}</span>
                 </div>
                 <div className="col-xs-1 col-sm-1 col-md-3 col-lg-2"></div>
                 <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">

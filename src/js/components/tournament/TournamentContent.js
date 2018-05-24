@@ -1,7 +1,7 @@
 import React from 'react';
 
 import LeadingBoard from './leadingboard/LeadingBoard';
-import Games from './games/Games';
+import Bets from './bets/Bets';
 import GeneralBet from './generalbet/GeneralBet';
 
 import {
@@ -18,7 +18,7 @@ export default class TournamentContent extends React.Component {
     render() {
         var linkToHome = this.props.pathTo + "/";
         var linkToLeadingBoard = this.props.pathTo + "/leading-board";
-        var linkToGames = this.props.pathTo + "/games";
+        var linkToBets = this.props.pathTo + "/bets";
         var linkToGeneralBet = this.props.pathTo + "/general-bet";
         return (
             <div classNameName="row">
@@ -26,7 +26,7 @@ export default class TournamentContent extends React.Component {
                 <Switch>
                     <Redirect path={linkToHome} exact to={linkToLeadingBoard} />
                     <Route path={linkToLeadingBoard} exact component={LeadingBoard} />
-                    <Route path={linkToGames} exact component={Games} />
+                    <Route path={linkToBets} exact component={() => <Bets data={this.props.bets}/>} />
                     <Route path={linkToGeneralBet} exact component={GeneralBet} />
                 </Switch>
             </div >
