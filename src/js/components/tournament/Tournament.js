@@ -28,7 +28,7 @@ export default class Tournament extends React.Component {
                     </div>
                     <TournamentNav pathTo={this.props.pathTo} />
                     <div className="row" style={{ 'marginBottom': '20px' }} />
-                    <TournamentContent pathTo={this.props.pathTo} bets={this.props.bets} />
+                    <TournamentContent pathTo={this.props.pathTo} teams={this.props.teams} bets={this.props.bets} />
                 </div>
             </Router>
         );
