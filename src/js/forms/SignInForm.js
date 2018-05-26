@@ -33,7 +33,7 @@ export default class SignInForm extends React.Component {
             }
         }).then(response => {
             auth.setJwtToken(response.data.access_token);
-            this.props.setGlobalSignIn(true);
+            this.props.setGlobalSignedIn(true);
         }).catch(error => {
             //
         });

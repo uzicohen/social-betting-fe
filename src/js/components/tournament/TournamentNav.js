@@ -26,7 +26,6 @@ export default class TournamentNav extends React.Component {
                         </NavItem>
                     </LinkContainer>
                 </Nav>
-
             </div>
         );
     }

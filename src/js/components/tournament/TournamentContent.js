@@ -26,7 +26,7 @@ export default class TournamentContent extends React.Component {
                 <Switch>
                     <Redirect path={linkToHome} exact to={linkToLeadingBoard} />
                     <Route path={linkToLeadingBoard} exact component={LeadingBoard} />
-                    <Route path={linkToBets} exact component={() => <Bets teams={this.props.teams} bets={this.props.bets}/>} />
+                    <Route path={linkToBets} exact component={() => <Bets pathTo={linkToBets} teams={this.props.teams} bets={this.props.bets}/>} />
                     <Route path={linkToGeneralBet} exact component={GeneralBet} />
                 </Switch>
             </div >
