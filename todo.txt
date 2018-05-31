@@ -1,0 +1,11 @@
+Fix router in bets
+Fix my tournaments alignemnet
+Add history
+
+Fix bets UI
+Implement bets POST button
+Implement new tournament form
+Implement join tournament form
+Implement sign-up form
+Add leading board
+

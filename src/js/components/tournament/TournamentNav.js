@@ -20,11 +20,11 @@ export default class TournamentNav extends React.Component {
                             Bets
                         </NavItem>
                     </LinkContainer>
-                    <LinkContainer to={linkToGeneralBet}>
+                    {/* <LinkContainer to={linkToGeneralBet}>
                         <NavItem eventKey={3}>
                             General Bet
                         </NavItem>
-                    </LinkContainer>
+                    </LinkContainer> */}
                 </Nav>
             </div>
         );

@@ -9,6 +9,8 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
+import moment from 'moment';
+
 
 export default class Bet extends React.Component {
 
@@ -25,6 +27,10 @@ export default class Bet extends React.Component {
       </Tooltip>
     );
 
+    const date = this.getLocalDateTime(this.props.data.game.date);
+    var dayTime = date.hour();
+    const friendlyTime = this.getFriendlyTime(date);
+
     return (
       <div classNameName="row">
         <div className="row-xs row-sm row-md col-lg-2">
@@ -32,7 +38,7 @@ export default class Bet extends React.Component {
             <div id="gameInfoHeading" className="panel-heading">
               {this.props.data.game.level}
               <div className="pull-right">
-                {this.props.data.game.date}
+                {friendlyTime}
               </div>
             </div>
             <div id="gameInfoBody" className="panel-body">
@@ -105,8 +111,17 @@ export default class Bet extends React.Component {
             </div>
           </div>
         </div>
-
       </div>
     );
   }
+
+  getLocalDateTime(input) {
+    var fmt = 'DD-MM-YYYY HH:mm:ss';
+    return moment.utc(input, fmt).local();
+  }
+
+  getFriendlyTime(date) {
+    return date.format('HH:mm');
+  }
+
 }
